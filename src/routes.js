@@ -6,11 +6,6 @@ const routes = [
     method: "GET",
     handler: userController.listUsers,
   },
-  {
-    endpoint: "/produtos",
-    method: "GET",
-    handler: userController.listUsers,
-  },
 ];
 
 export default routes;
