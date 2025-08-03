@@ -1,16 +1,21 @@
 import http from "node:http";
-import { users } from "./mocks/users.js";
+import routes from "./routes.js";
 
 const server = http.createServer((request, response) => {
   console.log(`Request method: ${request.method} | Endpoint: ${request.url}`);
 
-  if (request.url === "/users" && request.method === "GET") {
-    response.writeHead(200, { "Content-Type": "application/json" });
-    response.end(JSON.stringify(users));
-  } else {
-    response.writeHead(404, { "Content-Type": "text/html" });
-    response.end(`Cannot ${request.method} ${request.url}`);
+  const route = routes.find(
+    (routeObj) =>
+      routeObj.endpoint === request.url && routeObj.method === request.method
+  );
+
+  if (route) {
+    route.handler(request, response);
+    return;
   }
+
+  response.writeHead(404, { "Content-Type": "text/html" });
+  response.end(`Cannot ${request.method} ${request.url}`);
 });
 
 server.listen(3000, () =>
