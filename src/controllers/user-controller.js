@@ -64,6 +64,14 @@ const userController = {
       name,
     });
   },
+
+  deleteUser(request, response) {
+    let id = +request.params.id;
+
+    users.splice(id - 1, 1);
+
+    response.status(200).send({ deleted: true });
+  },
 };
 
 export default userController;
