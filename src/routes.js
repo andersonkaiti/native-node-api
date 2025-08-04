@@ -6,6 +6,11 @@ const routes = [
     method: "GET",
     handler: userController.listUsers,
   },
+  {
+    endpoint: "/users/:id",
+    method: "GET",
+    handler: userController.getUserById,
+  },
 ];
 
 export default routes;

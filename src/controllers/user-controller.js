@@ -15,6 +15,21 @@ const userController = {
     response.writeHead(200, { "Content-Type": "application/json" });
     response.end(JSON.stringify(sortedUsers));
   },
+
+  getUserById(request, response) {
+    const { id } = request.params;
+
+    const user = users.find((user) => user.id === +id);
+
+    if (!user) {
+      response.writeHead(400, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ error: "User not found" }));
+      return;
+    }
+
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({ user }));
+  },
 };
 
 export default userController;
