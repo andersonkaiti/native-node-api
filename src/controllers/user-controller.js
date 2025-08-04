@@ -41,6 +41,29 @@ const userController = {
 
     response.status(200).send(newUser);
   },
+
+  updateUser(request, response) {
+    let id = +request.params.id;
+    const { name } = request.body;
+
+    const userExists = users.find((user) => user.id === id);
+
+    if (!userExists) {
+      return response.status(400).send({
+        error: "User not found",
+      });
+    }
+
+    users[id - 1] = {
+      ...users[id - 1],
+      name,
+    };
+
+    response.status(200).send({
+      id,
+      name,
+    });
+  },
 };
 
 export default userController;
