@@ -11,6 +11,7 @@ const routes = [
     method: "GET",
     handler: userController.getUserById,
   },
+<<<<<<< HEAD
   {
     endpoint: "/users",
     method: "POST",
@@ -26,6 +27,8 @@ const routes = [
     method: "DELETE",
     handler: userController.deleteUser,
   },
+=======
+>>>>>>> f578848cb73de0cc2e855c7a7013351488c89e08
 ];
 
 export default routes;
