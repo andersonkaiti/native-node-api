@@ -1,4 +1,5 @@
 import http from "node:http";
+import { bodyParser } from "./helpers/body-parser.js";
 import routes from "./routes.js";
 
 const server = http.createServer((request, response) => {
@@ -38,7 +39,11 @@ const server = http.createServer((request, response) => {
       };
     };
 
-    route.handler(request, response);
+    if (["POST", "PUT", "PATCH"].includes(request.method)) {
+      bodyParser(request, () => route.handler(request, response));
+    } else {
+      route.handler(request, response);
+    }
 
     return;
   }
