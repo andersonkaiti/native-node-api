@@ -26,7 +26,6 @@ const userController = {
 
     response.status(200).send(user);
   },
-<<<<<<< HEAD
 
   createUser(request, response) {
     const { body } = request;
@@ -73,8 +72,6 @@ const userController = {
 
     response.status(200).send({ deleted: true });
   },
-=======
->>>>>>> f578848cb73de0cc2e855c7a7013351488c89e08
 };
 
 export default userController;

@@ -1,8 +1,5 @@
 import http from "node:http";
-<<<<<<< HEAD
 import { bodyParser } from "./helpers/body-parser.js";
-=======
->>>>>>> f578848cb73de0cc2e855c7a7013351488c89e08
 import routes from "./routes.js";
 
 const server = http.createServer((request, response) => {
@@ -42,15 +39,11 @@ const server = http.createServer((request, response) => {
       };
     };
 
-<<<<<<< HEAD
     if (["POST", "PUT", "PATCH"].includes(request.method)) {
       bodyParser(request, () => route.handler(request, response));
     } else {
       route.handler(request, response);
     }
-=======
-    route.handler(request, response);
->>>>>>> f578848cb73de0cc2e855c7a7013351488c89e08
 
     return;
   }
